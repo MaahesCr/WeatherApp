@@ -9,26 +9,34 @@ function App() {
     {value:"Главная2", href: "/service", icon: "api"},
     {value:"Главная3", href: "/main", icon: "verified"}]
 
-    let lat = 35;
-    let lon = 139;
+    let lat;
+    let lon;
+    let url; 
     const Key = '8f14a99c167bb0e2da2199289ec32efe';
+    
+    navigator.geolocation.getCurrentPosition(position => {
+      lat = position.coords.latitude;
+      lon = position.coords.longitude;
+      url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Key}`;
+      getApiInfo(url);
+    })
 
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Key}`;
-    
-    fetch(url) 
+    let apiLocation = async () => {
+      await getApiInfo(url);
+    };
+
+   async function getApiInfo (url) {
+    await fetch(url) 
     .then(response => response.json())
-    .then(commits => console.log(commits));
-    
-    /*
-    fetch(url)
-    .then(res => {
-        const Data = res.json();
-        return Data;
-    })
-    .then( data => {
-      console.log(data)
-    })
-    */
+    .then(commits => {
+      return `${commits.sys.country} ${commits.name}`;
+      //apiLocation = `${commits.sys.country} ${commits.name}`;
+      //console.log(apiLocation);
+    });
+  }
+  
+  console.log(apiLocation);
+
   return (
     <div className="App">
       <nav className = "nav-bar">
@@ -38,7 +46,7 @@ function App() {
       </nav>
       <main>
         <div className="topMainSection">
-          <h3 className="api-location-h3">Api location</h3>
+          <h3 className="api-location-h3">{apiLocation}</h3>
           <h6 className="current-date">Current  date</h6>
         </div>
         <p>lorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhflorem hfbvhb hdsfbsdhbhds bhfbhsbhbfs hbhfs dhf</p>
