@@ -1,0 +1,61 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.nav-bar{
+    height: 50px;
+    width: 100%;
+    background-color: gray;
+    position: fixed;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+}
+
+main{
+    padding: 50px;
+
+}
+
+p{
+    margin: 20px;
+}
+
+.burger-btn{
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.burger-btn:before{
+    margin-left: -10px;
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20px;
+    background-color: black;
+    height: 2px;
+}
+
+.burger-btn span{
+    margin-left: -10px;
+    position: absolute;
+    top: 9;
+    width: 20px;
+    background-color: black;
+    height: 2px;
+}
+
+.burger-btn:after{
+    margin-left: -10px;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    background-color: black;
+    height: 2px;
+}
