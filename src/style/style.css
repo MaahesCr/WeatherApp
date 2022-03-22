@@ -5,29 +5,25 @@
 }
 
 .nav-bar {
-  height: 50px;
-  width: 100%;
-  background-color: gray;
-  position: fixed;
+  height: 100%;
+  width: 70px;
+  background-color: #5267B3;
+  position: absolute;
   z-index: 50;
-  display: flex;
-  align-items: center;
-}
-
-main {
-  padding: 50px;
-}
-
-p {
-  margin: 20px;
 }
 
 .burger-btn {
   width: 30px;
   height: 30px;
-  margin-left: 20px;
+  margin-left: 10px;
   position: relative;
   cursor: pointer;
+  border: none;
+  background-color: #5267B3;
+}
+
+.burger-btn:focus {
+  background-color: #5267B3;
 }
 
 .burger-btn:before {
@@ -35,18 +31,20 @@ p {
   content: "";
   position: absolute;
   top: 0;
-  width: 20px;
+  width: 35px;
   background-color: black;
-  height: 2px;
+  height: 5px;
+  border-radius: 5px;
 }
 
 .burger-btn span {
   margin-left: -10px;
   position: absolute;
-  top: 9;
-  width: 20px;
+  top: 12px;
+  width: 35px;
   background-color: black;
-  height: 2px;
+  height: 5px;
+  border-radius: 5px;
 }
 
 .burger-btn:after {
@@ -54,19 +52,20 @@ p {
   content: "";
   position: absolute;
   bottom: 0;
-  width: 20px;
+  width: 35px;
   background-color: black;
-  height: 2px;
+  height: 5px;
+  border-radius: 5px;
 }
 
 .menu {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  top: 50px;
   left: 0;
+  top: 0;
   transform: translateX(-130%);
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 
 .menu.active {
@@ -76,13 +75,14 @@ p {
 .blur {
   width: 100vw;
   height: 100vh;
-  left: 30%;
+  left: 370px;
   backdrop-filter: blur(2px);
   position: absolute;
 }
 
 .menu__content {
-  width: 30%;
+  margin-left: 70px;
+  width: 300px;
   height: 100%;
   background-color: black;
   display: flex;
@@ -126,12 +126,37 @@ ul {
 
 @media screen and (max-width: 768px) {
   .menu__content {
-    width: 100%;
+    width: 90%;
   }
 
   .blur {
     backdrop-filter: none;
   }
+}
+main {
+  margin-left: 90px;
+}
+
+.topMainSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.api-location-h3, .current-date {
+  margin: 0;
+  padding-top: 20px;
+  font-size: 28px;
+}
+
+.current-date {
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+p {
+  margin: 0 20px 0 0;
+  padding-top: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

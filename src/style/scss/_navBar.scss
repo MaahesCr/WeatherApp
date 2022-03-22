@@ -1,3 +1,8 @@
+
+$backgroundColor: #5267B3   ;
+$widthOfBurgersLine: 35px;
+
+
 *{
     padding: 0;
     margin: 0;
@@ -5,30 +10,25 @@
 }
 
 .nav-bar{
-    height: 50px;
-    width: 100%;
-    background-color: gray;
-    position: fixed;
+    height: 100%;
+    width: 70px;
+    background-color: $backgroundColor;
+    position: absolute;
     z-index: 50;
-    display: flex;
-    align-items: center;
-}
-
-main{
-    padding: 50px;
-
-}
-
-p{
-    margin: 20px;
 }
 
 .burger-btn{
     width: 30px;
     height: 30px;
-    margin-left: 20px;
+    margin-left: 10px;
     position: relative;
     cursor: pointer;
+    border: none;
+    background-color: $backgroundColor;
+}
+
+.burger-btn:focus{
+    background-color: $backgroundColor;
 }
 
 .burger-btn:before{
@@ -36,18 +36,20 @@ p{
     content: '';
     position: absolute;
     top: 0;
-    width: 20px;
+    width: $widthOfBurgersLine;
     background-color: black;
-    height: 2px;
+    height: 5px;
+    border-radius: 5px;
 }
 
 .burger-btn span{
     margin-left: -10px;
     position: absolute;
-    top: 9;
-    width: 20px;
+    top: 12px;
+    width: $widthOfBurgersLine;
     background-color: black;
-    height: 2px;
+    height: 5px;
+    border-radius: 5px;
 }
 
 .burger-btn:after{
@@ -55,7 +57,8 @@ p{
     content: '';
     position: absolute;
     bottom: 0;
-    width: 20px;
+    width: $widthOfBurgersLine;
     background-color: black;
-    height: 2px;
+    height: 5px;
+    border-radius: 5px;
 }
