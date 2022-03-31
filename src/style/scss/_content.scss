@@ -1,5 +1,10 @@
+$main-background-color: #90A8FF;
+
 main{
-    margin-left: 90px;
+    margin-left: 70px;
+    padding-left: 20px;
+    background-color: $main-background-color;
+    height: 100vh;
 }
 
 .topMainSection{
@@ -8,10 +13,16 @@ main{
     align-items: center;
 }
 
-.api-location-h3, .current-date{
+.city-and-country, .current-date{
     margin: 0;
     padding-top: 20px;
     font-size: 28px;
+}
+
+.state{
+    margin: 0;
+    padding-top: 10px;
+    font-size: 18px; 
 }
 
 .current-date{
@@ -22,4 +33,17 @@ main{
 p{
     margin: 0 20px 0 0;
     padding-top: 20px;
+}
+
+@media screen and (max-width:768px) {
+    .city-and-country, .current-date{
+        padding-top: 8px;
+        font-size: 18px;
+    }
+
+    .state{
+        margin: 0;
+        padding-top: 8px;
+        font-size: 12px; 
+    }
 }
