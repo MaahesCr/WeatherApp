@@ -4,10 +4,11 @@ main{
     margin-left: 70px;
     padding-left: 20px;
     background-color: $main-background-color;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
 }
 
-.topMainSection{
+.top-main-section{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,10 +31,34 @@ main{
     margin-right: 20px;
 }
 
-p{
-    margin: 0 20px 0 0;
-    padding-top: 20px;
+.weather-animation-block{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 30%;
 }
+
+.day-of-week-header{
+    font-size: 24px;
+}
+
+#mane-weather-animatin{
+    height: 350px;
+    width: 350px;
+    margin: -30px;
+}
+
+.current-temp{
+    margin: 10px 0;
+    font-size: 22px;
+}
+
+.weather-direction{
+    margin: 5px 0;
+    font-size: 18px;
+}
+
 
 @media screen and (max-width:768px) {
     .city-and-country, .current-date{

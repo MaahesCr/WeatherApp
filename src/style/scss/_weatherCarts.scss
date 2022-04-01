@@ -1,0 +1,32 @@
+.other-days-weather{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.weather-card{
+    margin: 10px;
+    background-color: #0009;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px 50px;
+    border-radius: 10px;
+}
+
+.card-animation{
+    margin-top: -20px;
+    height: 70px;
+}
+
+.current-temp-card{
+    font-size: 24px;
+    margin: 8px 0;
+    color: #FCFCFC;
+}
+
+.day-of-week-header-card{
+    font-size: 20px;
+    margin: 4px 0;
+    color: #F0F0F0
+}

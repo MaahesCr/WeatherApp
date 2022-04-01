@@ -3,7 +3,7 @@ import apiInfo from './getGeolocation';
 let [lat, lon] = [0, 0];
 const Key = '8f14a99c167bb0e2da2199289ec32efe';
 
-const weatherInfo = () => {
+const futureWeatherInfo = () => {
     return getWeatherResult();
 }
 
@@ -22,9 +22,9 @@ async function fetchUrl (url) {
 }
 
 async function getUrl(lat, lon, Key)  {
-    let part = 'daily';
-    return `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=${part}&appid=${Key}`;
-}       
+    let part = 'current, minutely, hourly, alerts';
+    return `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${Key}`;
+}
 
 async function getLatLon () {
     let location;
@@ -33,4 +33,4 @@ async function getLatLon () {
     return [lat, lon];
 }
 
-export default weatherInfo;
+export default futureWeatherInfo;

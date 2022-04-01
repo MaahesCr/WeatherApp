@@ -1,5 +1,10 @@
+*{
+    //font-family
+    font-family: 'Times New Roman', Times, serif;
+}
 //@import '_sidePanel.scss';
 @import '_navBar.scss';
 @import '_menu.scss';
 @import '_content.scss';
+@import '_weatherCarts.scss';
 
