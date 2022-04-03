@@ -1,4 +1,4 @@
-$main-background-color: #90A8FF;
+$main-background-color: #5267B3;
 
 main{
     margin-left: 70px;
@@ -6,6 +6,8 @@ main{
     background-color: $main-background-color;
     min-height: 100vh;
     height: 100%;
+    
+    background: radial-gradient(#e66465, #5267B3);
 }
 
 .top-main-section{
@@ -37,6 +39,7 @@ main{
     flex-direction: column;
     align-items: center;
     min-height: 30%;
+    
 }
 
 .day-of-week-header{
@@ -56,7 +59,8 @@ main{
 
 .weather-direction{
     margin: 5px 0;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 

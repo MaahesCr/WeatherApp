@@ -1,5 +1,5 @@
 * {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "century gothic", "Trebuchet MS", "century gothic";
 }
 
 * {
@@ -140,9 +140,10 @@ ul {
 main {
   margin-left: 70px;
   padding-left: 20px;
-  background-color: #90A8FF;
+  background-color: #5267B3;
   min-height: 100vh;
   height: 100%;
+  background: radial-gradient(#e66465, #5267B3);
 }
 
 .top-main-section {
@@ -193,7 +194,8 @@ main {
 
 .weather-direction {
   margin: 5px 0;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
@@ -225,8 +227,8 @@ main {
 }
 
 .card-animation {
-  margin-top: -20px;
-  height: 70px;
+  margin: -70px -40px -20px -40px;
+  height: 150px;
 }
 
 .current-temp-card {

@@ -5,6 +5,7 @@ import apiInfo from './getGeolocation'
 import { useEffect } from "react";
 import weatherInfo from "./getWeatherInfo";
 import futureWeatherInfo from './getFutureWeatherInfo'
+import Card from "./components/weather_card";
 
 function App() {
   const [menuActive, setMenuActive] = useState(false)
@@ -78,6 +79,7 @@ const daysOfWeek = [
   'Friday',
   'Saturday'
 ];
+
   async function setWeatherVariables () {
     WeatherVariables.dt = weather.dt;
     WeatherVariables.feels_like = Math.round( weather.main.feels_like - kelvinKoef);  //Kelvin
@@ -104,24 +106,24 @@ const daysOfWeek = [
     
     futureWeatherVariables.first_animation = futureWeather.daily[1].weather[0].icon;
     futureWeatherVariables.first_temp = Math.round(futureWeather.daily[1].temp.day - kelvinKoef)
-    futureWeatherVariables.first_day_of_week = daysOfWeek[b.getDay()+1];
+    futureWeatherVariables.first_day_of_week = daysOfWeek[(b.getDay()+1)%7];
 
     futureWeatherVariables.second_animation = futureWeather.daily[2].weather[0].icon;
     futureWeatherVariables.second_temp = Math.round(futureWeather.daily[2].temp.day - kelvinKoef)
-    futureWeatherVariables.second_day_of_week = daysOfWeek[b.getDay()+2];
+    futureWeatherVariables.second_day_of_week = daysOfWeek[(b.getDay()+2)%7];
 
     futureWeatherVariables.third_animation = futureWeather.daily[3].weather[0].icon;
     futureWeatherVariables.third_temp = Math.round(futureWeather.daily[3].temp.day - kelvinKoef)
-    futureWeatherVariables.third_day_of_week = daysOfWeek[b.getDay()+3];
+    futureWeatherVariables.third_day_of_week = daysOfWeek[(b.getDay()+3)%7];
 
     futureWeatherVariables.fourth_animation = futureWeather.daily[3].weather[0].icon;
     futureWeatherVariables.fourth_temp = Math.round(futureWeather.daily[3].temp.day - kelvinKoef)
-    futureWeatherVariables.fourth_day_of_week = daysOfWeek[b.getDay()+3];
+    futureWeatherVariables.fourth_day_of_week = daysOfWeek[(b.getDay()+4)%7];
   }
 
   console.log('Weather: ',weather)
   setWeatherVariables();
-  console.log(futureWeatherVariables.second_temp);
+  console.log(futureWeatherVariables.first_day_of_week);
 
   let city = '';
   let country_code = '';
@@ -148,18 +150,28 @@ const daysOfWeek = [
   longitude: 60.6125
   postal: "620002"
   state: "Sverdlovskaya Oblast'" */
+  
   async function setSrcImg () {
     document.getElementById('mane-weather-animatin').src = `image/animated/${WeatherVariables.weather_icon}.svg`;
     document.getElementById('mane-weather-animatin').alt = `${WeatherVariables.weather_description}`;
+    document.getElementById('first-card-animation').src = `image/animated/${futureWeatherVariables.first_animation}.svg`;
+    document.getElementById('second-card-animation').src = `image/animated/${futureWeatherVariables.second_animation}.svg`;
+    document.getElementById('third-card-animation').src = `image/animated/${futureWeatherVariables.third_animation}.svg`;
+    document.getElementById('fourth-card-animation').src = `image/animated/${futureWeatherVariables.fourth_animation}.svg`;
   }
 
   setSrcImg();
 
 
-  const items = [
+  /*const items = [
     {value:"Главная", href: "/main", icon: "anchor"},
     {value:"Главная2", href: "/service", icon: "api"},
-    {value:"Главная3", href: "/main", icon: "verified"}]
+    {value:"Главная3", href: "/main", icon: "verified"}
+  ]*/
+
+  const items = [
+    {}
+  ]
 
   return (
     <div className="App">
@@ -182,29 +194,10 @@ const daysOfWeek = [
         </div>
         
         <section className="other-days-weather">
-          <div className="weather-card">
-            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
-            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
-            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
-          </div>
-
-          <div className="weather-card">
-            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
-            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
-            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
-          </div>
-
-          <div className="weather-card">
-            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
-            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
-            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
-          </div>
-
-          <div className="weather-card">
-            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
-            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
-            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
-          </div>
+          <Card id = {'first-card-animation'} scr = {futureWeatherVariables.first_animation} temp = {futureWeatherVariables.first_temp} day = {futureWeatherVariables.first_day_of_week}></Card>
+          <Card id = {'second-card-animation'} scr = {futureWeatherVariables.second_animation} temp = {futureWeatherVariables.second_temp} day = {futureWeatherVariables.second_day_of_week}></Card>
+          <Card id = {'third-card-animation'} scr = {futureWeatherVariables.third_animation} temp = {futureWeatherVariables.third_temp} day = {futureWeatherVariables.third_day_of_week}></Card>
+          <Card id = {'fourth-card-animation'} scr = {futureWeatherVariables.fourth_animation} temp = {futureWeatherVariables.fourth_temp} day = {futureWeatherVariables.fourth_day_of_week}></Card>         
         </section>
 
         <p>Feels{WeatherVariables.feels_like}</p>
@@ -221,3 +214,27 @@ const daysOfWeek = [
 }
 
 export default App;
+
+/**<div className="weather-card">
+            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
+            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
+            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
+          </div>
+
+          <div className="weather-card">
+            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
+            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
+            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
+          </div>
+
+          <div className="weather-card">
+            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
+            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
+            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
+          </div>
+
+          <div className="weather-card">
+            <img className="card-animation" id = 'first-card-animation' src="./image/animated/721.svg" alt="loading" />
+            <h3 className="current-temp-card">{WeatherVariables.temp}° C</h3>
+            <h3 className="day-of-week-header-card">{daysOfWeek[currentDateOfWeek]}</h3>
+          </div> */
