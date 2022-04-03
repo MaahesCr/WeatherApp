@@ -29,34 +29,46 @@
     flex-direction: column;
     align-items: center;
     transition: all 0.4s;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .menu__header{
     padding: 10px;
-    font-size: 2rem;
-    color: white;
-    border-bottom: 1px solid white;
-    width: 100%;
     text-align: center;
+    color: wheat;
 }
 
-ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.3rem;
-}
-
-ul li {
+ul {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
     margin: 10px 0;
 }
 
-ul{
+.menu__item_value{
+    margin: 5px 0;
+    color: wheat;
+    font-size: 18px;
+}
+
+.menu__item_desc{
+    margin: 0;
+    color: wheat;
+    font-size: 22px;
+}
+
+.signature{
+    color: wheat;
+    align-self: center;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 18px;
+    font-family: 'brush script mt', 'mv boli', 'gabriola'; //brush script mt
 }
 
 .material-icons{

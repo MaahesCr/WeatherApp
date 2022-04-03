@@ -28,8 +28,6 @@ function App() {
     futureWeatherInfo().then((data) => setFutureWeather(data))
   }, []);
 
-  console.log('future: ', futureWeather)
-
   /* 
    dt 1648730873
    main:
@@ -59,43 +57,32 @@ function App() {
     dt: 0, feels_like: 0, humidity: 0, pressure: 0, temp: 0, sunrise: '', sunset: '', timezone: 0, visibility: 0, weather_description: '', weather_icon: '', weather_main: '', wind_speed: ''
   } 
 
-  //first second third fourth
-
   let futureWeatherVariables = {
-    first_animation: '721', first_temp: 0, first_day_of_week: '', 
-    second_animation: '721', second_temp: 0, second_day_of_week: '', 
-    third_animation: '721', third_temp: 0, third_day_of_week: '', 
-    fourth_animation: '721', fourth_temp: 0, fourth_day_of_week: '', 
+    first_animation: '721', first_temp: 0, first_day_of_week: '', second_animation: '721', second_temp: 0, second_day_of_week: '', third_animation: '721', third_temp: 0, third_day_of_week: '', fourth_animation: '721', fourth_temp: 0, fourth_day_of_week: ''
   }
 
 const kelvinKoef = 273.15;
 
 const daysOfWeek = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday'
+  'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 ];
 
   async function setWeatherVariables () {
     WeatherVariables.dt = weather.dt;
     WeatherVariables.feels_like = Math.round( weather.main.feels_like - kelvinKoef);  //Kelvin
     WeatherVariables.humidity = weather.main.humidity;
-    WeatherVariables.pressure = weather.main.pressure;
+    WeatherVariables.pressure = Math.round(weather.main.pressure * 0.750064);
     WeatherVariables.temp = Math.round(weather.main.temp - kelvinKoef);
-    
+
     let a = new Date(weather.sys.sunrise * 1000);
     let hour = a.getHours();
     let min = a.getMinutes();
-    WeatherVariables.sunrise = `${hour} ${min}`;
+    WeatherVariables.sunrise = `${hour}h ${min}m`;
     
     let b = new Date(weather.sys.sunset * 1000);
     let hourB = b.getHours();
     let minB = b.getMinutes();
-    WeatherVariables.sunset = `${hourB} ${minB}`;
+    WeatherVariables.sunset = `${hourB}h ${minB}m`;
 
     WeatherVariables.timezone = new Date().toUTCString;
     WeatherVariables.visibility = weather.visibility;
@@ -104,21 +91,23 @@ const daysOfWeek = [
     WeatherVariables.weather_main = weather.weather[0].main;
     WeatherVariables.wind_speed = weather.wind.speed;
     
+    let c = new Date();
+
     futureWeatherVariables.first_animation = futureWeather.daily[1].weather[0].icon;
     futureWeatherVariables.first_temp = Math.round(futureWeather.daily[1].temp.day - kelvinKoef)
-    futureWeatherVariables.first_day_of_week = daysOfWeek[(b.getDay()+1)%7];
+    futureWeatherVariables.first_day_of_week = daysOfWeek[(c.getDay()+1)%7];
 
     futureWeatherVariables.second_animation = futureWeather.daily[2].weather[0].icon;
     futureWeatherVariables.second_temp = Math.round(futureWeather.daily[2].temp.day - kelvinKoef)
-    futureWeatherVariables.second_day_of_week = daysOfWeek[(b.getDay()+2)%7];
+    futureWeatherVariables.second_day_of_week = daysOfWeek[(c.getDay()+2)%7];
 
     futureWeatherVariables.third_animation = futureWeather.daily[3].weather[0].icon;
     futureWeatherVariables.third_temp = Math.round(futureWeather.daily[3].temp.day - kelvinKoef)
-    futureWeatherVariables.third_day_of_week = daysOfWeek[(b.getDay()+3)%7];
+    futureWeatherVariables.third_day_of_week = daysOfWeek[(c.getDay()+3)%7];
 
     futureWeatherVariables.fourth_animation = futureWeather.daily[3].weather[0].icon;
     futureWeatherVariables.fourth_temp = Math.round(futureWeather.daily[3].temp.day - kelvinKoef)
-    futureWeatherVariables.fourth_day_of_week = daysOfWeek[(b.getDay()+4)%7];
+    futureWeatherVariables.fourth_day_of_week = daysOfWeek[(c.getDay()+4)%7];
   }
 
   console.log('Weather: ',weather)
@@ -128,11 +117,13 @@ const daysOfWeek = [
   let city = '';
   let country_code = '';
   let state = '';
+  let postal = '';
 
   async function ApiRender () {
     city = location.city;
     country_code = location.country_code;
     state = location.state;
+    postal = location.postal;
   }
   
   console.log('location: ', location)
@@ -141,6 +132,7 @@ const daysOfWeek = [
 
   let date = new Date();
   let currentDateOfWeek = date.getDay();
+  let currentTime = date.getSeconds();
 
   /*IPv4: "128.75.79.254"
   city: "Yekaterinburg"
@@ -150,7 +142,7 @@ const daysOfWeek = [
   longitude: 60.6125
   postal: "620002"
   state: "Sverdlovskaya Oblast'" */
-  
+
   async function setSrcImg () {
     document.getElementById('mane-weather-animatin').src = `image/animated/${WeatherVariables.weather_icon}.svg`;
     document.getElementById('mane-weather-animatin').alt = `${WeatherVariables.weather_description}`;
@@ -168,10 +160,18 @@ const daysOfWeek = [
     {value:"Главная2", href: "/service", icon: "api"},
     {value:"Главная3", href: "/main", icon: "verified"}
   ]*/
+  
+    const items =  [
+      {description: "Feels like: ", value: `${WeatherVariables.feels_like}° C`},
+      {description: "Humidity: ", value: `${WeatherVariables.humidity} %`},
+      {description: "Pressure:	", value: `${WeatherVariables.pressure} mmhg`},
+      {description: "Postal: ", value: postal},
+      {description: "Visibility: ", value: `${WeatherVariables.visibility}m`},
+      {description: "Wind speed: ", value: `${WeatherVariables.wind_speed} m/s`},
+      {description: "Sunrise: ", value: WeatherVariables.sunrise},
+      {description: "Sunset: ", value: WeatherVariables.sunset}
+    ]
 
-  const items = [
-    {}
-  ]
 
   return (
     <div className="App">
@@ -199,16 +199,8 @@ const daysOfWeek = [
           <Card id = {'third-card-animation'} scr = {futureWeatherVariables.third_animation} temp = {futureWeatherVariables.third_temp} day = {futureWeatherVariables.third_day_of_week}></Card>
           <Card id = {'fourth-card-animation'} scr = {futureWeatherVariables.fourth_animation} temp = {futureWeatherVariables.fourth_temp} day = {futureWeatherVariables.fourth_day_of_week}></Card>         
         </section>
-
-        <p>Feels{WeatherVariables.feels_like}</p>
-        <p>Temp{WeatherVariables.temp}</p>
-        <p>{WeatherVariables.sunrise}</p>
-        <p>{WeatherVariables.sunset}</p>
-        <p>{WeatherVariables.weather_description}</p>
-        <img id="image" src="./image/animated/01n.svg"></img>
-        <p>{WeatherVariables.weather_icon}</p>
       </main>
-      <Menu active = {menuActive} setActive = {setMenuActive} header = {"Бургер меню"} items = {items}/>
+      <Menu active = {menuActive} setActive = {setMenuActive} header = {currentTime} items = {items}/>
     </div> //src='img/animated/{datos.weather[0].icon}.svg'
   )
 }
