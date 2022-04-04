@@ -1,12 +1,16 @@
 *{
-    //font-family
     font-family: 'century gothic', 'Trebuchet MS', 'century gothic';
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
 }
 //@import '_sidePanel.scss';
 @import '_navBar.scss';
 @import '_menu.scss';
 @import '_content.scss';
 @import '_weatherCarts.scss';
+
+
+
 
 
 

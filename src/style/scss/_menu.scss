@@ -4,7 +4,7 @@
     height: 100vh;
     left: 0;
     top: 0;
-    transform: translateX(-130%);
+    transform: translateX(-130vw);  //-130%
     transition: all 0.3s;
     transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -87,7 +87,35 @@ li {
     .menu__content{
         width: 90%;
     }
+
     .blur{
         backdrop-filter: none;
+        display: none;
+    }
+
+    .menu{
+        position: fixed;
+        width: 100vw;
+        height: 90%;
+        top: 48px;
+        transform: translateY(-150vh);  //-130%
+    }
+
+    .menu__content{
+        margin-left: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    .menu.active {
+        transform: translateX(0);
+    }
+
+    .menu__item_desc{
+        font-size: 14px;
+    }
+
+    .menu__item_value{
+        font-size: 18px;
     }
 }

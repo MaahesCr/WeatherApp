@@ -1,13 +1,14 @@
 $main-background-color: #5267B3;
 
 main{
-    
     padding-left: 90px;
     background-color: $main-background-color;
     min-height: 100vh;
     height: 100%;
-    
     background: radial-gradient(#e66465aa, #5267B3aa);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .top-main-section{
@@ -83,6 +84,31 @@ main{
         margin: 0;
         padding-top: 8px;
         font-size: 12px; 
+    }
+
+    main{
+        padding: 48px 0 0 0;
+        overflow: hidden;
+    }
+
+    .city-and-country{
+        margin-left: 20px;
+    }
+
+    .state{
+        margin-left: 20px;
+    }
+
+    .current-temp{
+        font-size: 20px;
+    }
+    
+    .weather-direction{
+        font-size: 16px;
+    }
+
+    .current-date{
+        font-size: 14px;
     }
 }
 

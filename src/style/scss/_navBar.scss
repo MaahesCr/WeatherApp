@@ -17,9 +17,6 @@ $widthOfBurgersLine: 35px;
     background-color:  rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px) invert(0.1)
     box-shadow none;
-    -webkit-box-shadow: none;
-
-
 }
 
 .burger-btn{
@@ -68,4 +65,28 @@ $widthOfBurgersLine: 35px;
     background-color: black;
     height: 5px;
     border-radius: 5px;
+}
+
+@media screen and (max-width:768px) {
+    .nav-bar{
+        max-width: 100vw;
+        width: 100%;
+        height: 48px;
+    }
+
+    .burger-btn:before{
+        margin-top: -10px;
+    }
+
+    .burger-btn span{
+        margin-top: -10px;
+    }
+
+    .burger-btn:after{
+        bottom: 10px;
+    }
+
+    .burger-btn{
+        margin-top: 10px;
+    }
 }

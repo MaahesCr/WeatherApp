@@ -1,5 +1,7 @@
 * {
   font-family: "century gothic", "Trebuchet MS", "century gothic";
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -15,7 +17,6 @@
   z-index: 50;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px) invert(0.1) box-shadow none;
-  -webkit-box-shadow: none;
 }
 
 .burger-btn {
@@ -66,13 +67,36 @@
   border-radius: 5px;
 }
 
+@media screen and (max-width: 768px) {
+  .nav-bar {
+    max-width: 100vw;
+    width: 100%;
+    height: 48px;
+  }
+
+  .burger-btn:before {
+    margin-top: -10px;
+  }
+
+  .burger-btn span {
+    margin-top: -10px;
+  }
+
+  .burger-btn:after {
+    bottom: 10px;
+  }
+
+  .burger-btn {
+    margin-top: 10px;
+  }
+}
 .menu {
   position: fixed;
   width: 100vw;
   height: 100vh;
   left: 0;
   top: 0;
-  transform: translateX(-130%);
+  transform: translateX(-130vw);
   transition: all 0.3s;
   transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -156,6 +180,33 @@ li {
 
   .blur {
     backdrop-filter: none;
+    display: none;
+  }
+
+  .menu {
+    position: fixed;
+    width: 100vw;
+    height: 90%;
+    top: 48px;
+    transform: translateY(-150vh);
+  }
+
+  .menu__content {
+    margin-left: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .menu.active {
+    transform: translateX(0);
+  }
+
+  .menu__item_desc {
+    font-size: 14px;
+  }
+
+  .menu__item_value {
+    font-size: 18px;
   }
 }
 main {
@@ -164,6 +215,9 @@ main {
   min-height: 100vh;
   height: 100%;
   background: radial-gradient(#e66465aa, #5267B3aa);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .top-main-section {
@@ -238,6 +292,31 @@ main {
     padding-top: 8px;
     font-size: 12px;
   }
+
+  main {
+    padding: 48px 0 0 0;
+    overflow: hidden;
+  }
+
+  .city-and-country {
+    margin-left: 20px;
+  }
+
+  .state {
+    margin-left: 20px;
+  }
+
+  .current-temp {
+    font-size: 20px;
+  }
+
+  .weather-direction {
+    font-size: 16px;
+  }
+
+  .current-date {
+    font-size: 14px;
+  }
 }
 @keyframes color {
   0% {
@@ -281,13 +360,17 @@ main {
 }
 
 .weather-card {
-  margin: 10px;
+  width: 15%;
+  margin: 15px;
   background-color: #0009;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2px 50px;
   border-radius: 10px;
+  -webkit-box-shadow: -4px 4px 10px 0px rgba(34, 60, 80, 0.7);
+  -moz-box-shadow: -4px 4px 10px 0px rgba(34, 60, 80, 0.7);
+  box-shadow: -4px 4px 10px 0px rgba(34, 60, 80, 0.7);
 }
 
 .card-animation {
@@ -296,6 +379,7 @@ main {
 }
 
 .current-temp-card {
+  white-space: pre;
   font-size: 24px;
   margin: 8px 0;
   color: #FCFCFC;
@@ -305,6 +389,25 @@ main {
   font-size: 20px;
   margin: 4px 0;
   color: #F0F0F0;
+}
+
+@media screen and (max-width: 768px) {
+  .weather-card {
+    width: 20%;
+    padding: auto;
+  }
+
+  .current-temp-card {
+    font-size: 18px;
+  }
+
+  .day-of-week-header-card {
+    font-size: 16px;
+  }
+
+  .other-days-weather {
+    margin-top: 25px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -5,13 +5,17 @@
 }
 
 .weather-card{
-    margin: 10px;
+    width: 15%;
+    margin: 15px;
     background-color: #0009;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2px 50px;
     border-radius: 10px;
+    -webkit-box-shadow: -4px 4px 10px 0px rgba(34, 60, 80, 0.7);
+    -moz-box-shadow: -4px 4px 10px 0px rgba(34, 60, 80, 0.7);
+    box-shadow: -4px 4px 10px 0px rgba(34, 60, 80, 0.7);
 }
 
 .card-animation{
@@ -21,6 +25,7 @@
 }
 
 .current-temp-card{
+    white-space: pre;
     font-size: 24px;
     margin: 8px 0;
     color: #FCFCFC;
@@ -30,4 +35,22 @@
     font-size: 20px;
     margin: 4px 0;
     color: #F0F0F0
+}
+
+@media screen and (max-width:768px) {
+    .weather-card{
+        width: 20%;
+        padding: auto;
+    }
+
+    .current-temp-card{
+        font-size: 18px;
+    }
+    
+    .day-of-week-header-card{
+        font-size: 16px;
+    }
+    .other-days-weather{
+        margin-top: 25px;
+    }
 }

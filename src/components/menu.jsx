@@ -9,8 +9,6 @@ const menu = ({header, items, active, setActive}) => {
                 <ul>
                     {items.map(item =>
                         <li>
-                            {/*<a href={item.href}>{item.value}</a>
-                            <span className="material-icons">{item.icon}</span>*/}
                             <h5 className="menu__item_desc">{item.description}</h5>
                             <h4 className="menu__item_value">{item.value}</h4>
                         </li>
