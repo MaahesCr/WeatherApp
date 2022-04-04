@@ -11,9 +11,11 @@
 .nav-bar {
   height: 100%;
   width: 70px;
-  background-color: #5267B3;
-  position: absolute;
+  position: fixed;
   z-index: 50;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px) invert(0.1) box-shadow none;
+  -webkit-box-shadow: none;
 }
 
 .burger-btn {
@@ -23,11 +25,13 @@
   position: relative;
   cursor: pointer;
   border: none;
-  background-color: #5267B3;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px) invert(0.1);
 }
 
 .burger-btn:focus {
-  background-color: #5267B3;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px) invert(0.1);
 }
 
 .burger-btn:before {
@@ -70,6 +74,7 @@
   top: 0;
   transform: translateX(-130%);
   transition: all 0.3s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .menu.active {
@@ -85,16 +90,19 @@
 }
 
 .menu__content {
+  backdrop-filter: blur(4px) invert(0.1);
   margin-left: 70px;
   width: 300px;
   height: 100%;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: all 0.4s;
   align-items: flex-start;
   justify-content: space-between;
+  border-radius: 0 2em 10px 0;
+  transition: filter 0.5s;
 }
 
 .menu__header {
@@ -115,13 +123,14 @@ li {
   margin: 10px 0;
 }
 
-.menu__item_value {
+.menu__item_desc {
   margin: 5px 0;
   color: wheat;
   font-size: 18px;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.644);
 }
 
-.menu__item_desc {
+.menu__item_value {
   margin: 0;
   color: wheat;
   font-size: 22px;
@@ -150,12 +159,11 @@ li {
   }
 }
 main {
-  margin-left: 70px;
-  padding-left: 20px;
+  padding-left: 90px;
   background-color: #5267B3;
   min-height: 100vh;
   height: 100%;
-  background: radial-gradient(#e66465, #5267B3);
+  background: radial-gradient(#e66465aa, #5267B3aa);
 }
 
 .top-main-section {
@@ -168,12 +176,19 @@ main {
   margin: 0;
   padding-top: 20px;
   font-size: 28px;
+  color: #c9ffed;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .state {
   margin: 0;
   padding-top: 10px;
   font-size: 18px;
+  -webkit-animation: color 5s ease-in-out infinite;
+  -moz-animation: color 5s ease-in-out infinite;
+  -o-animation: color 5s ease-in-out infinite;
+  animation: color 5s ease-in-out infinite;
+  color: white;
 }
 
 .current-date {
@@ -191,6 +206,7 @@ main {
 
 .day-of-week-header {
   font-size: 24px;
+  color: black;
 }
 
 #mane-weather-animatin {
@@ -201,7 +217,8 @@ main {
 
 .current-temp {
   margin: 10px 0;
-  font-size: 22px;
+  font-size: 24px;
+  color: black;
 }
 
 .weather-direction {
@@ -220,6 +237,41 @@ main {
     margin: 0;
     padding-top: 8px;
     font-size: 12px;
+  }
+}
+@keyframes color {
+  0% {
+    color: #fcb5b5;
+  }
+  10% {
+    color: #fcdfb5;
+  }
+  20% {
+    color: #f7fcb5;
+  }
+  30% {
+    color: #d7fcb5;
+  }
+  40% {
+    color: #b7fcb5;
+  }
+  50% {
+    color: #b5fcf0;
+  }
+  60% {
+    color: #b5dcfc;
+  }
+  70% {
+    color: #c2b5fc;
+  }
+  80% {
+    color: #e8b5fc;
+  }
+  90% {
+    color: #fcb5f0;
+  }
+  100% {
+    color: #fcb5c7;
   }
 }
 .other-days-weather {

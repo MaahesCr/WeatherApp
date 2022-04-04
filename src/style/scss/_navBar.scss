@@ -12,9 +12,14 @@ $widthOfBurgersLine: 35px;
 .nav-bar{
     height: 100%;
     width: 70px;
-    background-color: $backgroundColor;
-    position: absolute;
+    position: fixed;
     z-index: 50;
+    background-color:  rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px) invert(0.1)
+    box-shadow none;
+    -webkit-box-shadow: none;
+
+
 }
 
 .burger-btn{
@@ -24,11 +29,13 @@ $widthOfBurgersLine: 35px;
     position: relative;
     cursor: pointer;
     border: none;
-    background-color: $backgroundColor;
+    background-color:  rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px) invert(0.1)
 }
 
 .burger-btn:focus{
-    background-color: $backgroundColor;
+    background-color:  rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px) invert(0.1)
 }
 
 .burger-btn:before{

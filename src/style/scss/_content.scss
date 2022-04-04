@@ -1,13 +1,13 @@
 $main-background-color: #5267B3;
 
 main{
-    margin-left: 70px;
-    padding-left: 20px;
+    
+    padding-left: 90px;
     background-color: $main-background-color;
     min-height: 100vh;
     height: 100%;
     
-    background: radial-gradient(#e66465, #5267B3);
+    background: radial-gradient(#e66465aa, #5267B3aa);
 }
 
 .top-main-section{
@@ -20,12 +20,19 @@ main{
     margin: 0;
     padding-top: 20px;
     font-size: 28px;
+    color: #c9ffed;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .state{
     margin: 0;
     padding-top: 10px;
     font-size: 18px; 
+    -webkit-animation: color 5s ease-in-out infinite;
+    -moz-animation: color 5s ease-in-out infinite;
+    -o-animation: color 5s ease-in-out infinite;
+    animation: color 5s ease-in-out infinite;
+    color: white;
 }
 
 .current-date{
@@ -44,6 +51,7 @@ main{
 
 .day-of-week-header{
     font-size: 24px;
+    color: black;
 }
 
 #mane-weather-animatin{
@@ -54,7 +62,8 @@ main{
 
 .current-temp{
     margin: 10px 0;
-    font-size: 22px;
+    font-size: 24px;
+    color: black;
 }
 
 .weather-direction{
@@ -76,3 +85,17 @@ main{
         font-size: 12px; 
     }
 }
+
+@keyframes color {
+    0%{color: #fcb5b5;}
+    10%{color: #fcdfb5;}
+    20%{color: #f7fcb5;}
+    30%{color: #d7fcb5;}
+    40%{color: #b7fcb5;}
+    50%{color: #b5fcf0;}
+    60%{color: #b5dcfc;}
+    70%{color: #c2b5fc;}
+    80%{color: #e8b5fc;}
+    90%{color: #fcb5f0;}
+    100%{color: #fcb5c7;}
+    }

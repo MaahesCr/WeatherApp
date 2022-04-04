@@ -110,9 +110,9 @@ const daysOfWeek = [
     futureWeatherVariables.fourth_day_of_week = daysOfWeek[(c.getDay()+4)%7];
   }
 
-  console.log('Weather: ',weather)
+  //console.log('Weather: ',weather)
   setWeatherVariables();
-  console.log(futureWeatherVariables.first_day_of_week);
+  
 
   let city = '';
   let country_code = '';
@@ -126,7 +126,7 @@ const daysOfWeek = [
     postal = location.postal;
   }
   
-  console.log('location: ', location)
+  //console.log('location: ', location)
   
   ApiRender();
 
@@ -175,6 +175,7 @@ const daysOfWeek = [
 
   return (
     <div className="App">
+      
       <nav className = "nav-bar">
         <button className="burger-btn" onClick={() => setMenuActive(!menuActive)}>
           <span/>
@@ -201,7 +202,8 @@ const daysOfWeek = [
         </section>
       </main>
       <Menu active = {menuActive} setActive = {setMenuActive} header = {currentTime} items = {items}/>
-    </div> //src='img/animated/{datos.weather[0].icon}.svg'
+      
+    </div>
   )
 }
 
