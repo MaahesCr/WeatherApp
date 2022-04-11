@@ -409,5 +409,22 @@ main {
     margin-top: 25px;
   }
 }
+.off-loading-screen {
+  display: none;
+  overflow: hidden;
+}
+
+.loading-screen {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 9000;
+  background-color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
 
 /*# sourceMappingURL=style.css.map */

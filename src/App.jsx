@@ -7,11 +7,14 @@ import weatherInfo from "./getWeatherInfo";
 import futureWeatherInfo from './getFutureWeatherInfo'
 import Card from "./components/weather_card";
 
+
 function App() {
   const [menuActive, setMenuActive] = useState(false)
 
   const [location, setLocation] = useState(null);
   
+  const [windowLoad, setWindowLoad] = useState(true);
+
   useEffect(() => {
     apiInfo().then((data) => setLocation(data))
   }, []);
@@ -150,10 +153,16 @@ const daysOfWeek = [
     document.getElementById('second-card-animation').src = `image/animated/${futureWeatherVariables.second_animation}.svg`;
     document.getElementById('third-card-animation').src = `image/animated/${futureWeatherVariables.third_animation}.svg`;
     document.getElementById('fourth-card-animation').src = `image/animated/${futureWeatherVariables.fourth_animation}.svg`;
+  
   }
 
   setSrcImg();
 
+  window.onload = function () {
+    setTimeout(() => {
+    document.getElementById('loading-screen').classList.toggle("loading-screen");
+  }, 7000);
+  }
 
   /*const items = [
     {value:"Главная", href: "/main", icon: "anchor"},
@@ -163,7 +172,7 @@ const daysOfWeek = [
   
     const items =  [
       {description: "Feels like: ", value: `${WeatherVariables.feels_like}° C`},
-      {description: "Humidity: ", value: `${WeatherVariables.humidity} %`},
+      {description: "Humidity: ", value: `${WeatherVariables.humidity} %`},    
       {description: "Pressure:	", value: `${WeatherVariables.pressure} mmhg`},
       {description: "Postal: ", value: postal},
       {description: "Visibility: ", value: `${WeatherVariables.visibility}m`},
@@ -172,11 +181,12 @@ const daysOfWeek = [
       {description: "Sunset: ", value: WeatherVariables.sunset}
     ]
 
-
   return (
     <div className="App">
-      
-      <nav className = "nav-bar">
+        <div id="loading-screen" className="off-loading-screen loading-screen">
+        <img src="./image/animated/ezgif-2-38aaf3d0b3.gif" alt="" />
+        </div>
+        <nav className = "nav-bar">
         <button className="burger-btn" onClick={() => setMenuActive(!menuActive)}>
           <span/>
         </button> 
@@ -189,7 +199,7 @@ const daysOfWeek = [
         <h3 className="state">{state}</h3>
         <div className="weather-animation-block">
           <h3 className="day-of-week-header">{daysOfWeek[currentDateOfWeek]}</h3>
-          <img id = 'mane-weather-animatin' src="./image/animated/721.svg" alt="loading" />
+          <img onerror="this.style.visibility = 'hidden'" id = 'mane-weather-animatin' src="./image/animated/721.svg" alt="" />
           <h3 className="current-temp">{WeatherVariables.temp}° C</h3>
           <h4 className="weather-direction">{WeatherVariables.weather_main}</h4>
         </div>
@@ -202,7 +212,6 @@ const daysOfWeek = [
         </section>
       </main>
       <Menu active = {menuActive} setActive = {setMenuActive} header = {currentTime} items = {items}/>
-      
     </div>
   )
 }
