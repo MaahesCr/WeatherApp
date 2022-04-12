@@ -67,11 +67,24 @@ $widthOfBurgersLine: 35px;
     border-radius: 5px;
 }
 
+.close-nav-btn{
+    display: none;
+}
+
+.close-nav-btn-hide{
+    transform-style: 0.5s;
+    display: none;
+}
+
 @media screen and (max-width:768px) {
     .nav-bar{
+        overflow: hidden;
         max-width: 100vw;
         width: 100%;
         height: 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .burger-btn:before{
@@ -89,4 +102,22 @@ $widthOfBurgersLine: 35px;
     .burger-btn{
         margin-top: 10px;
     }
+
+    .close-nav-btn{
+        background-color: rgba(0, 0, 0, 0);
+        cursor: pointer;
+        margin-top: -6px;
+        margin-right: 10px;
+        height: 35px;
+        width: 35px;
+        display: block;
+        -webkit-backdrop-filter: blur(4px) invert(0.1) box-shadow none;
+        backdrop-filter: blur(4px) invert(0.1) box-shadow none;
+        border-style: none;
+    }
+
+    .close-nav-btn:focus{
+        background-color: rgba(0, 0, 0, 0);
+    }
 }
+
