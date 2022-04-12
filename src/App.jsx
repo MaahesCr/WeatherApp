@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import weatherInfo from "./getWeatherInfo";
 import futureWeatherInfo from './getFutureWeatherInfo'
 import Card from "./components/weather_card";
-
+import Close_btn from "./components/close_btn";
 
 function App() {
   const [menuActive, setMenuActive] = useState(false)
@@ -120,13 +120,15 @@ const daysOfWeek = [
   let city = '';
   let country_code = '';
   let state = '';
-  let postal = '';
+  let postal = `the data didn't load ¯\_(ツ)_/¯`;
 
   async function ApiRender () {
     city = location.city;
     country_code = location.country_code;
     state = location.state;
     postal = location.postal;
+    (postal == '') ? postal = `the data didn't load ¯\_(ツ)_/¯` : postal = location.postal
+    //(postal == '') ? postal = `the data didn't load ¯\_(ツ)_/¯` : null;
   }
   
   //console.log('location: ', location)
@@ -161,7 +163,7 @@ const daysOfWeek = [
   window.onload = function () {
     setTimeout(() => {
     document.getElementById('loading-screen').classList.toggle("loading-screen");
-  }, 7000);
+  }, 1500);
   }
 
   /*const items = [
@@ -189,7 +191,8 @@ const daysOfWeek = [
         <nav className = "nav-bar">
         <button className="burger-btn" onClick={() => setMenuActive(!menuActive)}>
           <span/>
-        </button> 
+        </button>
+        <Close_btn active = {menuActive} setActive = {setMenuActive}></Close_btn>
       </nav>
       <main>
         <div className="top-main-section">
